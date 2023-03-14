@@ -11,7 +11,7 @@ public class Main {
         }
         String source = args[0];
         CharStream input = CharStreams.fromFileName(source);
-        SysYLexerLexer lexer = new SysYLexerLexer(input);
+        SysYLexer lexer = new SysYLexer(input);
         lexer.removeErrorListeners();
         myErrorListener errorListener = new myErrorListener();
         lexer.addErrorListener(errorListener);
@@ -21,7 +21,7 @@ public class Main {
                 break;
             }
             String text = token.getText();
-            if (token.getType() == SysYLexerLexer.INTEGER_CONST) {
+            if (token.getType() == SysYLexer.INTEGER_CONST) {
                 if (text.startsWith("0X") || text.startsWith("0x")) {
                     text = String.valueOf(Integer.parseInt(text.substring(2), 16));
                 } else if (text.startsWith("0")) {
